@@ -1,4 +1,12 @@
+html {
+    height: 100vh;
+    background: rgb(219,97,31);
+    background: linear-gradient(0deg, rgba(219,97,31,1) 16%, rgba(34,195,180,1) 100%);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
 body {
+    height: 95vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -10,11 +18,15 @@ main {
     flex-direction: column;
     align-items: center;
 
-    background-color: #22222222;
+    background-color: #22222255;
     border-radius: 16px;
-    padding: 8px;
+    padding: 16px;
 }
 
 img {
     width: min(400px, 80vw);
+}
+
+footer {
+    margin-top: auto;
 }

@@ -8,13 +8,14 @@ async function updateFella() {
     if (!fellas) {
         fellas = await getFellasJson();
     }
-    
-    const fellaKeys = Object.keys(fellas);
-    const fellaNumber = fellaKeys[Math.floor(Math.random()*fellaKeys.length)]
-    const fellaName = fellas[fellaNumber]
 
-    imgElement.src = `pics/${fellaNumber}.png`
-    nameElement.innerHTML = fellaName
+    const fellaKeys = Object.keys(fellas);
+    const fellaNumber = fellaKeys[Math.floor(Math.random()*fellaKeys.length)];
+    const fellaName = fellas[fellaNumber];
+
+    imgElement.src = `pics/${fellaNumber}.png`;
+    imgElement.alt = fellaName;
+    nameElement.innerHTML = fellaName;
 }
 
 // grab the JSON file with all of the fella names/images.
@@ -25,6 +26,6 @@ function getFellasJson() {
         return res.json();
     })
     .then((data) => {
-        return data
+        return data;
     }) 
 }
