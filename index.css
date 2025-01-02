@@ -33,6 +33,14 @@ img {
     width: min(400px, 80vw);
 }
 
+button {
+    padding: 8px;
+    background: none;
+    border: 2px solid #fff;
+    border-radius: 8px;
+    color: #fff
+}
+
 footer {
     margin-top: auto;
 }
