@@ -51,14 +51,15 @@ def get_full_name(selected_template):
         selected_template = selected_template.replace("  ", " ")
     return selected_template.title()
 
-user_input = ""
-while user_input == "":
+user_input = "no"
+while user_input == "no":
     full_name = get_full_name(random.choice(templates))
-    user_input = input(f"type the name you want given \"{full_name}\" (or nothing to refresh): ")
+    user_input = input(f"type the name you want given \"{full_name}\" (or \"no\" to refresh): ")
 
-print(user_input)
+full_name = user_input if user_input != "" else full_name
 
-# TODO: add user input into existing json file
-#fellas = {"1": "Edgar"}
-#with open("fellas.json", "w") as outfile:
-    #json.dump(fellas, outfile)
+with open("fellas.json", "r+") as fellasJSON:
+    fellasObj = json.load(fellasJSON)
+    fellasObj[str(len(fellasObj)+1)] = full_name
+    fellasJSON.seek(0)
+    json.dump(fellasObj, fellasJSON)
