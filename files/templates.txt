@@ -1,0 +1,4 @@
+{name}, a {adj} {noun}
+{name}, the {adj}
+{adj} {name}
+{name} "The {noun}"
