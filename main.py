@@ -1,4 +1,4 @@
-import random
+import random, json
 
 with open("files/names.txt") as na:
     names = na.read().splitlines()
@@ -38,16 +38,27 @@ def get_adjective():
             adjective = f"{adverb} {adjective}"
     return adjective
 
-selected_template = random.choice(templates)
+def get_full_name(selected_template):
+    if random.random() > .95:
+        return get_name()
+    else:
+        selected_template = selected_template.replace("{name}", get_name())
+        if "{adj}" in selected_template:
+            selected_template = selected_template.replace("{adj}", get_adjective())
+        if "{noun}" in selected_template:
+            selected_template = selected_template.replace("{noun}", random.choice(nouns))
 
-if random.random() > .95:
-    print(get_name())
-else:
-    selected_template = selected_template.replace("{name}", get_name())
-    if "{adj}" in selected_template:
-        selected_template = selected_template.replace("{adj}", get_adjective())
-    if "{noun}" in selected_template:
-        selected_template = selected_template.replace("{noun}", random.choice(nouns))
+        selected_template = selected_template.replace("  ", " ")
+    return selected_template.title()
 
-    selected_template = selected_template.replace("  ", " ")
-    print(selected_template.title())
+user_input = ""
+while user_input == "":
+    full_name = get_full_name(random.choice(templates))
+    user_input = input(f"type the name you want given \"{full_name}\" (or nothing to refresh): ")
+
+print(user_input)
+
+# TODO: add user input into existing json file
+#fellas = {"1": "Edgar"}
+#with open("fellas.json", "w") as outfile:
+    #json.dump(fellas, outfile)
