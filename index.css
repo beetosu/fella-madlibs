@@ -16,6 +16,12 @@ body {
 main {
     display: flex;
     flex-direction: column;
+    gap: 8px
+}
+
+section {
+    display: flex;
+    flex-direction: column;
     align-items: center;
 
     background-color: #22222255;
@@ -29,4 +35,15 @@ img {
 
 footer {
     margin-top: auto;
+}
+
+.links {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 12px
+}
+
+.links img {
+    width: 50px
 }
