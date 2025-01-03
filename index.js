@@ -1,4 +1,5 @@
 let fellas = undefined;
+let currentFella = undefined;
 
 async function updateFella() {
     const imgElement = document.getElementById("fellaPic");
@@ -10,7 +11,13 @@ async function updateFella() {
     }
 
     const fellaKeys = Object.keys(fellas);
-    const fellaNumber = fellaKeys[Math.floor(Math.random()*fellaKeys.length)];
+    let fellaNumber = fellaKeys[Math.floor(Math.random()*fellaKeys.length)];
+    
+    // if the selected fella and the current fella are the same, reroll until we get someone new!
+    while (fellaNumber === currentFella) {
+        fellaNumber = fellaKeys[Math.floor(Math.random()*fellaKeys.length)];
+    }
+    currentFella = fellaNumber;
     const fellaName = fellas[fellaNumber];
 
     imgElement.src = `pics/${fellaNumber}.png`;
