@@ -62,4 +62,4 @@ with open("fellas.json", "r+") as fellasJSON:
     fellasObj = json.load(fellasJSON)
     fellasObj[str(len(fellasObj)+1)] = full_name
     fellasJSON.seek(0)
-    json.dump(fellasObj, fellasJSON)
+    json.dump(fellasObj, fellasJSON, indent=4)
